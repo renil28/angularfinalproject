@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="ratio ratio-1x1">
+          <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.865407060696!2d77.61387590999567!3d13.044238013229828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1770e1959907%3A0x368dea11d919b8a8!2sEpsilon!5e0!3m2!1sen!2sin!4v1692605334587!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" name="myIframe"></iframe>
+      </div>
+      <br>
+    </div>
+      <div class="col">
+        <h1>
+            {{title}}!!
+          </h1>
+          <form [formGroup]="angForm" novalidate>
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input class="form-control" formControlName="name" type="text">
+                </div>
+                <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" 
+                 class="alert alert-danger">
+                    <div *ngIf="angForm.controls['name'].errors">
+                      Name is required.
+                    </div>
+         </div>
+                 <div class="form-group">
+                    <label>Address:</label>
+                    <input class="form-control" formControlName="address" type="text">
+                </div>
+                <div *ngIf="angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)" 
+                   class="alert alert-danger">
+                    <div *ngIf="angForm.controls['address'].errors">
+                      Address is required.
+                    </div>
+                </div>
+                <br>
+                <button type="submit"
+                    [disabled]="angForm.pristine || angForm.invalid" class="btn btn-success">
+                    Save
+                </button>
+          </form>
+          <br />
+          <div class="toast show">
+            <div class="toast-header">
+              Address
+              <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">
+              Epsilon
+Karle Town Centre SEZ, 8-10, Nada Prabhu Kempe Gowda Main Rd, DadaMastan Layout, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045
+              <!--
+              <p>Form value: {{ angForm.value | json }}</p>
+              <p>Form status: {{ angForm.status | json }}</p>
+              -->
+            </div>
+          </div>
+          <br>
+      </div>
+    </div>
+</div>

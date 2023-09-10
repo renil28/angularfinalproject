@@ -1,0 +1,114 @@
+<!--
+<div>
+    <label>Name:</label>
+    <input type="text" [(ngModel)]="name">
+    <h1>Hello {{name}}!</h1>
+</div>
+-->
+
+ 
+<div class="container">
+  <h3>Registration</h3>
+  <div class="card">
+    <div class="card-body">
+      <form #f="ngForm" novalidate (ngSubmit)="save(f.value, f.form.valid)">
+             
+        <!-- we will place our fields here -->
+             
+        <!--name-->
+             
+        <div>
+                <label class="fw-bold">Name</label>      
+          <!--bind name to ngModel, it's required with minimum 5 characters-->
+               
+          <input
+            type="text"
+            name="name"
+            [(ngModel)]="user.name"
+            #name="ngModel"
+            required
+            minlength="5"
+            class="form-control"
+          />
+               
+          <!--show error only when field is not valid & it's dirty or form submited-->
+               
+          <small [hidden]="name.valid || (name.pristine && !f.submitted)">
+                  Name is required (minimum 5 characters).      
+          </small>
+               
+        </div>
+                   
+        <!--adrress group-->
+             
+        <div ngModelGroup="address">
+               
+          <!--street-->
+               
+          <div>
+                  <label class="fw-bold">Email</label>      
+            <input
+              type="email"
+              name="street"
+              [(ngModel)]="user.address.street"
+              #street="ngModel"
+              required
+              class="form-control"
+            />
+                 
+            <small
+              [hidden]="street.valid || (street.pristine && !f.submitted)"
+              class="text-danger"
+            >
+                  Email is required.      
+            </small>
+                 
+          </div>
+               
+          <!--postcode-->
+               
+          <div>
+                  <label class="fw-bold">Phone Number</label>      
+            <input
+              type="number"
+              name="postcode"
+              [(ngModel)]="user.address.postcode"
+              class="form-control"
+            />
+            <br />
+                 
+          </div>
+          <div>
+                  <label class="fw-bold">Select Course</label>      
+            <select class="form-select" aria-label="Default select example">
+              <option value="1">MERN</option>
+              <option value="2">MEAN</option>
+              <option value="3">MEVN</option>
+            </select>
+                 
+          </div>
+
+               
+        </div>
+
+              <button class="btn btn-success" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+<br />
+<!--
+<div class="container">
+     
+  <h4 class="text-success">Your Details</h4>
+     
+  <h5>Name: {{ f.value.name }}</h5>
+     
+  <h5>Address: {{ f.value.address.street }}</h5>
+     
+  <h5>Postcode: {{ f.value.address.postcode }}</h5>
+
+   
+  <h5>{{ f.value | json }}</h5>
+</div>
+-->
